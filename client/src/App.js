@@ -8,8 +8,8 @@ import NavBar from "./components/NavBar/NavBar";
 function App() {
   return (
     <div>
-      <NavBar />
       <Router>
+        <NavBar />
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/login" exact element={<Login />} />
