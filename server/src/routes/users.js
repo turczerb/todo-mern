@@ -3,12 +3,12 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { UserModel } from "../models/Users.js"; //dont forget the js ext at the end!! without the app is not find the model!!!!
 
 //what is this? export this and import in index.js
 const router = express.Router();
+import { UserModel } from "../models/Users.js"; //dont forget the js ext at the end!! without the app is not find the model!!!!
 
-router.post("/register", async (req, res) => {
+router.post("/registration", async (req, res) => {
   //req bodyba 1 objectbe elküldöm az username and passw
   const { userName, password, email } = req.body;
 
