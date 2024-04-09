@@ -4,6 +4,9 @@ import styled from "styled-components"; //css
 import { Navigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"; //  we can use formSchema with hook form thx to this
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
 const formSchema = yup.object().shape({
   email: yup.string().email().required("Email is required"),
@@ -21,6 +24,8 @@ const Regi = () => {
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState(eyeOff);
   const [passwordAgain, setPasswordAgain] = useState("");
   const [redirect, setRedirect] = useState(false);
   const {
@@ -31,6 +36,16 @@ const Regi = () => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
+
+  const handleToggle = () => {
+    if (type === "password") {
+      setIcon(eye);
+      setType("text");
+    } else {
+      setIcon(eyeOff);
+      setType("password");
+    }
+  };
 
   const handleSub = async (e, data) => {
     /* e.preventDefault(); */
@@ -86,11 +101,15 @@ const Regi = () => {
       <div>
         <input
           {...register("password")}
-          type="password"
+          type={type}
           placeholder="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
+          autoComplete="current-password"
         />
+        <span class="flex justify-around items-center" onClick={handleToggle}>
+          <Icon class="absolute mr-10" icon={icon} size={18} />
+        </span>
         <p>{errors.password?.message}</p>
       </div>
       <div>
