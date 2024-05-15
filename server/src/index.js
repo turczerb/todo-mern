@@ -7,7 +7,9 @@ import { userRouter } from "./routes/users.js";
 
 const app = express(); // generate a version of our API
 app.use(express.json()); //express json parserű frontend to backend when i send the data
-app.use(cors()); //  your app needs to request resources from a different origin.
+//app.use(cors()); //  your app needs to request resources from a different origin.
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+
 app.use("/auth", userRouter); //?? what is it the endpoint automatically will be stored in the auth route
 
 //connect to the database

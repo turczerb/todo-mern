@@ -4,20 +4,23 @@ import Login from "./components/LoginAndRegi/Login";
 import Regi from "./components/LoginAndRegi/Registr";
 import CreateUjTodo from "./components/CreateTodo/CreateUjTodo";
 import NavBar from "./components/NavBar/NavBar";
+import { UserContextProvider } from "./components/Hooks/UserContext";
 
 function App() {
   return (
-    <div>
-      <Router>
-        <NavBar />
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/login" exact element={<Login />} />
-          <Route path="/registration" exact element={<Regi />} />
-          <Route path="/create" exact element={<CreateUjTodo />} />
-        </Routes>
-      </Router>
-    </div>
+    <UserContextProvider>
+      <div>
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/login" exact element={<Login />} />
+            <Route path="/registration" exact element={<Regi />} />
+            <Route path="/create" exact element={<CreateUjTodo />} />
+          </Routes>
+        </Router>
+      </div>
+    </UserContextProvider>
   );
 }
 

@@ -47,9 +47,24 @@ router.post("/login", async (req, res) => {
     return res.json({ message: "username or password is not correct" });
   }
 
-  //valid, login process: vreate a token, sign: dataát elraksz? or what? token will be ? secret: verify the user is really autheenticated.?
+  //valid, login process: create a token, sign: dataát elraksz? or what? token will be ? secret: verify the user is really autheenticated.?
   const token = jwt.sign({ userName, id: user._id }, "secret");
   res.json({ token, userID: user._id, userName });
 });
 
+//logout
+router.post("/logout", (req, res) => {
+  res.cookie("token", "").json("Ok");
+});
+
+//profile why?
+router.get("/profile", (req, res) => {
+  //ww are able to read the cookies ??
+  const { token } = req.cookies;
+  jwt.verify(token, secret, {}, (err, info) => {
+    if (err) throw err;
+    res.json(info);
+  });
+  //  res.json(req.cookies);
+});
 export { router as userRouter };
