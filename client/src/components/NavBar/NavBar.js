@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"; //tudjunk másik oldalra jump
 import LoginAndRegi from "./LoginAndReg";
 import styled from "styled-components"; //css
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../Hooks/UserContext";
 
 const TitleContainer = styled.div`
   padding: 10px;
@@ -28,16 +30,25 @@ const SubNavbar = styled.div`
   background-color: yellow;
 `;
 
-const SubNavTitleConainer = styled.div``;
+const SubNavTitleConainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+`;
 
 const SubNavTitle = styled(Link)`
   text-decoration: none;
   color: black;
   padding: 8 px;
+  display: flex;
+  justify-content: center;
 `;
 
 const NavBar = () => {
   //linkto linkeket majd ujra jell írni
+  const { userInfo } = useContext(UserContext);
+  console.log(userInfo + "userinfo data honnét jön?");
+
+  const userName = userInfo?.userName;
 
   return (
     <div>
@@ -50,12 +61,17 @@ const NavBar = () => {
         </LogiRegiContainer>
       </TitleContainer>
 
-      <SubNavbar>
-        <SubNavTitleConainer>
-          <SubNavTitle to="/login">My todo List</SubNavTitle>
-          <SubNavTitle to="/create">New todo List</SubNavTitle>
-        </SubNavTitleConainer>
-      </SubNavbar>
+      {userName && (
+        <SubNavbar>
+          <SubNavTitleConainer>
+            <div></div>
+            <SubNavTitle to="/login">My todo List(s)</SubNavTitle>
+            <SubNavTitle to="/create">New todo List</SubNavTitle>
+          </SubNavTitleConainer>
+          <div></div>
+        </SubNavbar>
+      )}
+      {!userName && <></>}
     </div>
   );
 };

@@ -20,7 +20,7 @@ const LoginAndRegi = () => {
   // console.log("user info neve: " + userInfo.userName);
 
   //useEffect fetch
-
+  //ez itt minek? lehet nem is kell
   useEffect(() => {
     fetch("http://localhost:3001/auth/profile", {
       credentials: "include",
