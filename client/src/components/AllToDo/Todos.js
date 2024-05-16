@@ -3,4 +3,3 @@ const Todos = () => {
 };
 
 export default Todos;
-<div>az összes todo</div>;

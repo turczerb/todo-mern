@@ -4,8 +4,14 @@ import { Link } from "react-router-dom"; //tudjunk másik oldalra jump
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../Hooks/UserContext";
 import { useNavigate } from "react-router-dom";
+
 const LinkTitle = styled(Link)`
-  background-color: green;
+  text-decoration: none;
+  color: black;
+  margin: 20px;
+  &:hover {
+    border-left: 2px solid black;
+  }
 `;
 
 const LoginAndRegi = () => {
@@ -41,8 +47,8 @@ const LoginAndRegi = () => {
     <div>
       {userName && (
         <>
+          <LinkTitle> {userName} </LinkTitle>
           <LinkTitle onClick={logout}> Logout</LinkTitle>
-          <div> {userName} </div>
         </>
       )}
       {!userName && (
