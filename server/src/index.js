@@ -4,6 +4,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 
 import { userRouter } from "./routes/users.js";
+import { todosRouter } from "./routes/todos.js";
+//import { todosRouter } from "./routes/todos.js";
 
 const app = express(); // generate a version of our API
 app.use(express.json()); //express json parserű frontend to backend when i send the data
@@ -11,6 +13,7 @@ app.use(express.json()); //express json parserű frontend to backend when i send
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 app.use("/auth", userRouter); //?? what is it the endpoint automatically will be stored in the auth route
+app.use("/todos", todosRouter);
 
 //connect to the database
 mongoose.connect(

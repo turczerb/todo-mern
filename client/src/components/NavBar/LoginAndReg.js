@@ -47,7 +47,7 @@ const LoginAndRegi = () => {
     <div>
       {userName && (
         <>
-          <LinkTitle> {userName} </LinkTitle>
+          <LinkTitle> Hello {userName} !</LinkTitle>
           <LinkTitle onClick={logout}> Logout</LinkTitle>
         </>
       )}

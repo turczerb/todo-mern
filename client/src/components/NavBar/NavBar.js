@@ -66,7 +66,7 @@ const NavBar = () => {
           <SubNavTitleConainer>
             <div></div>
             <SubNavTitle to="/login">My todo List(s)</SubNavTitle>
-            <SubNavTitle to="/create">New todo List</SubNavTitle>
+            <SubNavTitle to="/create">Create new todo List</SubNavTitle>
           </SubNavTitleConainer>
           <div></div>
         </SubNavbar>
